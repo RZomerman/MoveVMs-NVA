@@ -40,7 +40,7 @@ Function PublicIPAddress ([array]$PublicIPAddresses, [string]$LogFile, [string]$
             If ( $IpAddressConfig.DnsSettings) {
                 Writelog ("DNS Name on IP: " +  $IpAddressConfig.DnsSettings)  -LogFile $LogFile
                 $IPDNSConfig=$IpAddressConfig.DnsSettings.DomainNameLabel
-                $IpAddressConfig.DnsSettings.DomainNameLabel=$null
+                $IpAddressConfig.DnsSettings=$null
                 Writelog ("Removing DNS Name from IP")  -LogFile $LogFile
                 Set-AzPublicIpAddress -PublicIpAddress $IpAddressConfig
             }

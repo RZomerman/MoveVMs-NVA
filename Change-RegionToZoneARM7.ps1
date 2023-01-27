@@ -119,10 +119,7 @@ for ($s=1;$s -le $NICObject.IpConfigurations.publicIPAddress.id.count ; $s++ ){
             If ( $IpAddressConfig.DnsSettings) {
                 Writelog ("   >DNS Name on IP: " +  $IpAddressConfig.DnsSettings)  -LogFile $LogFile
                 $IPDNSConfig=$IpAddressConfig.DnsSettings.DomainNameLabel
-                $IpAddressConfig.DnsSettings.DomainNameLabel=$null
-                If ($IpAddressConfig.DnsSettings.fqdn) {
-                  $IpAddressConfig.DnsSettings.fqdn=$null
-                }
+                $IpAddressConfig.DnsSettings=$null
                 Writelog ("   >Removing DNS Name from IP")  -LogFile $LogFile
                 $null=Set-AzPublicIpAddress -PublicIpAddress $IpAddressConfig
             }
